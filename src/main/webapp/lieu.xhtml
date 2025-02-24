@@ -74,8 +74,10 @@
                 </h:dataTable>
             </h:panelGroup>
             
-            <h:commandButton value="Supprimer" action="#{LieuEntrepriseBean.supprimerLieu()}" />
-            <h:commandButton value="Modifier" action="#{LieuEntrepriseBean.modifierLieu()}" />
+            <h:form>
+                <h:commandButton value="Supprimer" action="#{LieuEntrepriseBean.supprimerLieu()}" />
+                <h:commandButton value="Modifier" action="#{LieuEntrepriseBean.modifierLieu()}" />
+            </h:form>
             
         </div>
 

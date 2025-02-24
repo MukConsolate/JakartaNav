@@ -47,11 +47,7 @@ public class LieuEntrepriseBean {
     public void modifierLieuEntreprise(int id, String nom_lieu, String description, String latitude, String longitude) {
         Lieu lieu = em.find(Lieu.class, id);
         if (lieu != null) {
-//            lieu.setNom(nom_lieu);
-//            lieu.setDescription(description);
-//            lieu.setLatitude(latitude);
-//            lieu.setLongitude(longitude);
-            em.merge(lieu); // Fusionne les modifications avec la base de données
+            em.merge(lieu);
         }
     }
     
