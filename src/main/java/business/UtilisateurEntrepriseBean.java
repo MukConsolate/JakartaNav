@@ -46,6 +46,11 @@ public class UtilisateurEntrepriseBean {
         return em.find(Utilisateur.class, id);
     }
     
+    @Transactional
+    public void mettreAjourUtilisateur(Utilisateur utilisateur){
+        em.merge(utilisateur);
+    }
+    
     public Utilisateur TrouverUtilisateurParUsername(String username){
         try {
             return em.createQuery("SELECT u FROM Utilisateur u WHERE u.username = :username", Utilisateur.class)
@@ -68,5 +73,13 @@ public class UtilisateurEntrepriseBean {
     
     public boolean verifierMotdePasse(String password, String hashedPassword){
         return BCrypt.checkpw(password, hashedPassword); 
+    }
+    
+    public Utilisateur authentifier(String email, String password){
+        Utilisateur user = trouverUtilisateurParEmail(email);
+        if (user != null && verifierMotdePasse(password, user.getPassword())){
+            return user;
+        }
+        return null;
     }
 }

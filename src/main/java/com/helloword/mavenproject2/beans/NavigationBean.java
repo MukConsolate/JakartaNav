@@ -18,7 +18,7 @@ import java.io.IOException;
 public class NavigationBean {
         public void voirLieu(){
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("lieu.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("pages/lieu.xhtml");
             }
             catch (IOException e){
                 e.printStackTrace();
@@ -36,7 +36,7 @@ public class NavigationBean {
         
         public void voirApropos(){
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("a_propos.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("pages/a_propos.xhtml");
             }
             catch (IOException e){
                 e.printStackTrace();
