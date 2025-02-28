@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+    <head>
+        <title>Guide</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-group">
+                <h1>Lieux déjà visités :</h1>
+                <h:dataTable value="#{visiteBean.visitesUtilisateur}" var="visite" class="table">
+                    <h:column>
+                        <f:facet name="header">Nom du Lieu</f:facet>
+                        #{visite.lieu.nom}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Date de visite</f:facet>
+                        #{visite.dateVisite}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Temps passé</f:facet>
+                        #{visite.tempsPasse}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Observations</f:facet>
+                        #{visite.observations}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Dépenses</f:facet>
+                        #{visite.depenses}
+                    </h:column>
+                </h:dataTable>
+            </div>
+            <h1 class="mt-5">Sélectionner un lieu :</h1>
+            <h:form>
+                <div class="form-group">
+                    <h:selectOneMenu value="#{lieuBean.selectedLieu}" class="form-control">
+                        <f:selectItems value="#{lieuBean.lieux}" var="lieu"
+                                       itemValue="#{lieu.id}" itemLabel="#{lieu.nom}"/>
+                        <f:ajax listener="#{lieuBean.updateWeatherMessage}" render="weather"/>
+                    </h:selectOneMenu>
+                </div>
+            </h:form>
+
+            <div>
+                <h:outputText id="weather" value="#{lieuBean.weatherMessage}" class="mt-3"/><br/>
+                <h:form>
+                    <h:commandButton value="Visiter" action="#{visiteBean.afficherFormulaireVisite}" 
+                                     class="btn btn-primary mt-3"/>
+                </h:form>
+            </div>
+        </div>
+        
+        <div class="container">
+        <h:form rendered="#{visiteBean.afficherFormulaireVisite}">
+        <!-- Champs pour les détails de la visite -->
+        <div class="form-group">
+        <label for="utilisateur">Utilisateur :</label>
+        <h:inputText id="utilisateur" value="#{visiteBean.idUtilisateur}" type="number" required="true"
+
+        class="form-control" />
+        </div>
+        <div class="form-group">
+        <label for="dateVisite">Date de visite :</label>
+        <h:inputText id="dateVisite" value="#{visiteBean.dateVisite}" required="true" class="form-control">
+            <f:converter converterId="localDateTimeConverter"/>
+        </h:inputText>
+
+        class="form-control" type="date" />
+        </div>
+        <div class="form-group">
+        <label for="tempsPasse">Temps passé :</label>
+        <h:inputText id="tempsPasse" value="#{visiteBean.tempsPasse}"
+
+        required="true" class="form-control" type="number" />
+        </div>
+        <div class="form-group">
+        <label for="observations">Observations :</label>
+        <h:inputTextarea id="observations" value="#{visiteBean.observations}"
+
+        class="form-control" />
+        </div>
+        <div class="form-group">
+        <label for="depenses">Dépenses :</label>
+
+        <h:inputText id="depenses" value="#{visiteBean.depenses}" class="form-
+        control" type="number" />
+
+        </div>
+        <!-- Bouton pour sauvegarder la visite -->
+        <h:commandButton value="Enregistrer" action="#{visiteBean.sauvegarderVisite}"
+        styleClass="btn btn-primary" />
+        </h:form>
+        </div>
+    </body>
+</html>

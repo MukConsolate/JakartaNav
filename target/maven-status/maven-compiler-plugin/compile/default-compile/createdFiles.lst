@@ -1,13 +1,17 @@
 com\helloword\mavenproject2\beans\monnaie.class
 com\helloword\mavenproject2\beans\LieuBean$Lieu.class
+business\VisiteEntrepriseBean.class
 entities\Lieu.class
 com\helloword\mavenproject2\beans\AproposBean.class
 com\helloword\mavenproject2\beans\LieuBean.class
 business\SessionControlFilter.class
+com\helloword\mavenproject2\beans\VisiteBean.class
 com\helloword\mavenproject2\beans\welcomeBean.class
 business\UtilisateurEntrepriseBean.class
 com\helloword\mavenproject2\beans\NavigationBean.class
 business\LieuEntrepriseBean.class
+entities\Visite.class
+com\helloword\mavenproject2\beans\ConvertisseurBean.class
 business\SessionManager.class
 entities\Utilisateur.class
 com\helloword\mavenproject2\beans\UtilisateurBean.class

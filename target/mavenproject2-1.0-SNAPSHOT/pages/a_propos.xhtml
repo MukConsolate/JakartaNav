@@ -28,10 +28,10 @@
         
         <h:form>
             <h:outputLabel for="username" value="Nom :" class="form-label" /><br/>
-            <h:inputText id="username" value="#{welcomeBean.nom}"  required="true" styleClass="form-control"/><br/>
+            <h:inputText id="username" value="#{welcomeBean.nom}" readonly="true" required="true" styleClass="form-control"/><br/>
             
             <h:outputLabel for="email" value="Email :" class="form-label" /><br/>
-            <h:inputText id="email" value="#{welcomeBean.email}"  required="true" styleClass="form-control"/><br/>
+            <h:inputText id="email" value="#{welcomeBean.email}" readonly="true"  required="true" styleClass="form-control"/><br/>
             
             <h:outputLabel for="description" value="Description :" class="form-label" /><br/>
             <h:inputTextarea id="description" value="#{utilisateurBean.description}" styleClass="form-control"/><br/>

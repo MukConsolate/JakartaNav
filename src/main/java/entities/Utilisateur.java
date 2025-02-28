@@ -70,4 +70,9 @@ public class Utilisateur {
         this.password = password;
         this.description = description;
     }
+
+    public long getId() {
+        return id;
+    }
+
 }

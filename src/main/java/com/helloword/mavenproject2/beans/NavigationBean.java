@@ -34,6 +34,15 @@ public class NavigationBean {
             }
         }
         
+                public void visiterLieu(){
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("pages/guide.xhtml");
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        
         public void voirApropos(){
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("pages/a_propos.xhtml");
